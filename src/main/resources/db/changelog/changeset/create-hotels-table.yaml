@@ -1,0 +1,91 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-hotels-table
+      author: Ann
+      changes:
+        - createTable:
+            tableName: hotels
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: brand
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: address_id
+                  type: BIGINT
+              - column:
+                  name: contacts_id
+                  type: BIGINT
+              - column:
+                  name: arrival_time_id
+                  type: BIGINT
+  - changeSet:
+      id: dependencies-in-hotels
+      author: Ann
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: hotels
+            baseColumnNames: address_id
+            constraintName: FK_address_id
+            referencedTableName: address
+            referencedColumnNames: id
+            onDelete: CASCADE
+            onUpdate: CASCADE
+        - addForeignKeyConstraint:
+            baseTableName: hotels
+            baseColumnNames: contacts_id
+            constraintName: FK_contacts_id
+            referencedTableName: contacts
+            referencedColumnNames: id
+            onDelete: CASCADE
+            onUpdate: CASCADE
+        - addForeignKeyConstraint:
+            baseTableName: hotels
+            baseColumnNames: arrival_time_id
+            constraintName: FK_arrival_time_id
+            referencedTableName: arrival_Time
+            referencedColumnNames: id
+            onDelete: CASCADE
+            onUpdate: CASCADE
+
+  - changeSet:
+      id:  interaction-hotels-and-amenities
+      author: Ann
+      changes:
+        - createTable:
+            tableName: hotel_amenities
+            columns:
+              - column:
+                  name: hotel_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: FK_hotel_id
+                    referencedTableName: hotels
+                    referencedColumnNames: id
+                    onDelete: CASCADE
+                    onUpdate: CASCADE
+              - column:
+                  name: amenity_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: FK_amenity_id
+                    referencedTableName: amenities
+                    referencedColumnNames: id
+                    onDelete: CASCADE
+                    onUpdate: CASCADE
+            constraints:
+              primaryKey: true
+              primaryKeyName: PK_hotel_amenities
+

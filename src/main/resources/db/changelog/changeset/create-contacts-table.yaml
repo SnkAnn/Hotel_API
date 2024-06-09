@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-contacts-table
+      author: Ann
+      changes:
+        - createTable:
+            tableName: contacts
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: phone
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)

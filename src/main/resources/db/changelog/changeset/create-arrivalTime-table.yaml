@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-arrivalTime-table
+      author: Ann
+      changes:
+        - createTable:
+            tableName: arrival_Time
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: check_In
+                  type: TIME
+              - column:
+                  name: check_Out
+                  type: TIME

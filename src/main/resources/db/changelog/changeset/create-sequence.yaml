@@ -1,0 +1,15 @@
+databaseChangeLog:
+    - changeSet:
+        id: createSeq
+        author: Ann
+        changes:
+          - createSequence:
+              sequenceName: ADDRESS_SEQ
+          - createSequence:
+              sequenceName: HOTELS_SEQ
+          - createSequence:
+              sequenceName: CONTACTS_SEQ
+          - createSequence:
+              sequenceName: ARRIVAL_TIME_SEQ
+          - createSequence:
+              sequenceName: AMENITIES_SEQ
