@@ -35,12 +35,6 @@ public class HotelsServiceImpl implements HotelsService {
         return convertHotelToBriefInf(arr).get(0);
     }
 
-//    @Override
-//    public ResponseEntity<Hotel> getHotelById(Long id) {
-//        return repository.findById(id)
-//                .map(ResponseEntity::ok)
-//                .orElse(ResponseEntity.notFound().build());
-//    }
 
     @Override
     public ResponseEntity<Map<String, Object>> getHotelById(Long id) {
